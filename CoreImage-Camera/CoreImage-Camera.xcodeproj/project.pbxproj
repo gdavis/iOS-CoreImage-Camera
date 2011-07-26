@@ -18,6 +18,7 @@
 		775EC07713DE18390053D962 /* CoreImage_CameraAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 775EC07613DE18390053D962 /* CoreImage_CameraAppDelegate.m */; };
 		775EC07A13DE183A0053D962 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 775EC07813DE183A0053D962 /* MainStoryboard.storyboard */; };
 		775EC07D13DE183A0053D962 /* CoreImage_CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775EC07C13DE183A0053D962 /* CoreImage_CameraViewController.m */; };
+		7799CC7213DE514C003D45EE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7799CC7113DE514C003D45EE /* CoreMedia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		775EC07913DE183A0053D962 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		775EC07B13DE183A0053D962 /* CoreImage_CameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreImage_CameraViewController.h; sourceTree = "<group>"; };
 		775EC07C13DE183A0053D962 /* CoreImage_CameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreImage_CameraViewController.m; sourceTree = "<group>"; };
+		7799CC7113DE514C003D45EE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = ../../../../../System/Library/Frameworks/CoreMedia.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 				7726003F13DE29D5005958B0 /* AVFoundation.framework in Frameworks */,
 				7726004113DE2B80005958B0 /* QuartzCore.framework in Frameworks */,
 				7726004313DE3E19005958B0 /* CoreVideo.framework in Frameworks */,
+				7799CC7213DE514C003D45EE /* CoreMedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +79,7 @@
 		775EC06513DE18390053D962 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7799CC7113DE514C003D45EE /* CoreMedia.framework */,
 				7726004213DE3E19005958B0 /* CoreVideo.framework */,
 				7726004013DE2B80005958B0 /* QuartzCore.framework */,
 				7726003E13DE29D5005958B0 /* AVFoundation.framework */,

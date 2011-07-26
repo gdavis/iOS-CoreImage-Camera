@@ -11,7 +11,6 @@
 #define kIsCapturingStillImage @"isCapturingStillImage"
 
 @interface CoreImage_CameraViewController (Private)
-- (void)captureImage;
 
 @end
 
@@ -35,7 +34,7 @@
     
     session = [[AVCaptureSession alloc] init];
     
-    session.sessionPreset = AVCaptureSessionPreset1280x720;
+    session.sessionPreset = AVCaptureSessionPresetMedium;
     
     AVCaptureDevice *videoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     NSError *error = nil;
@@ -44,37 +43,27 @@
     if (videoInput) {
         [session addInput:videoInput];
         
-        // create a still capture output that we can feed to CoreImage
-        imageOutput = [[AVCaptureStillImageOutput alloc] init];        
+        // Create a VideoDataOutput and add it to the session
+        AVCaptureVideoDataOutput *output = [[[AVCaptureVideoDataOutput alloc] init] autorelease];
+        output.alwaysDiscardsLateVideoFrames = YES;
+        [session addOutput:output];
         
-        // set the options for the still image output
-//        NSMutableDictionary *opts = [[NSMutableDictionary alloc] init];
-//        [opts setObject:[NSNumber numberWithUnsignedInt:kCMVideoCodecType_JPEG] forKey:AVVideoCodecKey];
-//        [opts setObject:[NSNumber numberWithUnsignedInt:kCVPixelFormatType_32BGRA] forKey:(NSString*)kCVPixelBufferPixelFormatTypeKey];
+        // Configure your output.
+        dispatch_queue_t queue = dispatch_queue_create("myQueue", NULL);
+        [output setSampleBufferDelegate:self queue:queue];
+        dispatch_release(queue);
         
-
-        NSDictionary *opts = [NSDictionary dictionaryWithObjectsAndKeys:
-                              [NSNumber numberWithInt:kCMVideoCodecType_JPEG], AVVideoCodecKey,
-                              [NSNumber numberWithInt:kCVPixelFormatType_32BGRA], (id)kCVPixelBufferPixelFormatTypeKey,
-                                 nil];
-        
-        imageOutput.outputSettings = opts;
-        
-        // add output to session
-        [session addOutput:imageOutput];
-        
-
-        // grab a reference to the new connection for the output.
-        cameraConnection = [imageOutput.connections objectAtIndex:0];
+        // Specify the pixel format
+        output.videoSettings = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA] 
+                                                           forKey:(id)kCVPixelBufferPixelFormatTypeKey];
         
         
-        [imageOutput addObserver:self forKeyPath:kIsCapturingStillImage options:NSKeyValueObservingOptionNew context:nil];
+        // If you wish to cap the frame rate to a known value, such as 15 fps, set 
+        // minFrameDuration.
+//        output.minFrameDuration = CMTimeMake(1, 15);
         
-        NSLog(@"formats: %@", imageOutput.availableImageDataCodecTypes);        
-
         
         [session startRunning];
-        [self captureImage];
     }
     else { 
         // Handle the failure.
@@ -82,34 +71,44 @@
     }
 }
 
-- (void)captureImage {
-    NSLog(@"capturing new image");
-    [imageOutput captureStillImageAsynchronouslyFromConnection:cameraConnection
-                                             completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
-                                                 if (imageDataSampleBuffer != NULL) {
-                                                     NSLog(@"received camera image data");
-                                                     NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-                                                     UIImage *image = [UIImage imageWithData:imageData];
-                                                     imageView.image = image;
-                                                     
-                                                     
-                                                 } else if (error) {
-                                                     //                                                         id delegate = [self delegate];
-                                                     //                                                         if ([delegate respondsToSelector:@selector(captureStillImageFailedWithError:)]) {
-                                                     //                                                             [delegate captureStillImageFailedWithError:error];
-                                                     //                                                         }
-                                                 }
-                                             }];
-}
 
 
-
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if([keyPath isEqualToString:kIsCapturingStillImage]) {
-        NSLog(@"kIsCapturingStillImage changed to: %@", [change objectForKey:NSKeyValueChangeNewKey]);
-//        [self captureImage];
-    }
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+    
+    // Get a CMSampleBuffer's Core Video image buffer for the media data
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer); 
+    // Lock the base address of the pixel buffer
+    CVPixelBufferLockBaseAddress(imageBuffer, 0); 
+    
+    // Get the number of bytes per row for the pixel buffer
+    void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer); 
+    
+    // Get the number of bytes per row for the pixel buffer
+    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer); 
+    // Get the pixel buffer width and height
+    size_t width = CVPixelBufferGetWidth(imageBuffer); 
+    size_t height = CVPixelBufferGetHeight(imageBuffer); 
+    
+    // Create a device-dependent RGB color space
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB(); 
+    
+    // Create a bitmap graphics context with the sample buffer data
+    CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8, 
+                                                 bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst); 
+    // Create a Quartz image from the pixel data in the bitmap graphics context
+    CGImageRef quartzImage = CGBitmapContextCreateImage(context); 
+    // Unlock the pixel buffer
+    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+    
+    // Free up the context and color space
+    CGContextRelease(context); 
+    CGColorSpaceRelease(colorSpace);
+    
+    
+    /*We display the result on the custom layer. All the display stuff must be done in the main thread because
+	 UIKit is no thread safe, and as we are not in the main thread (remember we didn't use the main_queue)
+	 we use performSelectorOnMainThread to call our CALayer and tell it to display the CGImage.*/
+	[self.view.layer performSelectorOnMainThread:@selector(setContents:) withObject: (id) quartzImage waitUntilDone:YES];
 }
 
 

@@ -12,7 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <CoreVideo/CoreVideo.h>
 
-@interface CoreImage_CameraViewController : UIViewController {
+@interface CoreImage_CameraViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate> {
     
     AVCaptureVideoPreviewLayer *previewLayer;
     AVCaptureSession *session;
