@@ -1,20 +1,14 @@
 //
-//  CoreImage_CameraViewController.m
-//  CoreImage-Camera
+//  CICameraViewController.m
+//  CICamera
 //
 //  Created by Grant Davis on 7/25/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "CoreImage_CameraViewController.h"
+#import "CICameraViewController.h"
 
-#define kIsCapturingStillImage @"isCapturingStillImage"
-
-@interface CoreImage_CameraViewController (Private)
-
-@end
-
-@implementation CoreImage_CameraViewController
+@implementation CICameraViewController
 
 - (void)didReceiveMemoryWarning
 {
@@ -24,6 +18,8 @@
 
 #pragma mark - View lifecycle
 
+
+
 - (void)loadView {
     NSLog(@"load view");
     self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
@@ -32,10 +28,17 @@
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
     [self.view addSubview:imageView];
     
-    session = [[AVCaptureSession alloc] init];
+//    NSLog(@"Distortion: %@", [CIFilter filterNamesInCategory:kCICategoryDistortionEffect]);
+//    NSLog(@"Blurs: %@", [CIFilter filterNamesInCategory:kCICategoryBlur]);
+//    NSLog(@"Color effects: %@", [CIFilter filterNamesInCategory:kCICategoryColorEffect]);
+//    NSLog(@"Color adjustment: %@", [CIFilter filterNamesInCategory:kCICategoryColorAdjustment]);
+    NSLog(@"Built-in effects: %@", [CIFilter filterNamesInCategory:kCICategoryBuiltIn]);
     
+    // create a capture session
+    session = [[AVCaptureSession alloc] init];
     session.sessionPreset = AVCaptureSessionPresetMedium;
     
+    // setup the device and input
     AVCaptureDevice *videoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     NSError *error = nil;
     AVCaptureDeviceInput *videoInput = [AVCaptureDeviceInput deviceInputWithDevice:videoCaptureDevice error:&error];
@@ -44,7 +47,7 @@
         [session addInput:videoInput];
         
         // Create a VideoDataOutput and add it to the session
-        AVCaptureVideoDataOutput *output = [[[AVCaptureVideoDataOutput alloc] init] autorelease];
+        AVCaptureVideoDataOutput *output = [[AVCaptureVideoDataOutput alloc] init];
         output.alwaysDiscardsLateVideoFrames = YES;
         [session addOutput:output];
         
@@ -56,12 +59,6 @@
         // Specify the pixel format
         output.videoSettings = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA] 
                                                            forKey:(id)kCVPixelBufferPixelFormatTypeKey];
-        
-        
-        // If you wish to cap the frame rate to a known value, such as 15 fps, set 
-        // minFrameDuration.
-//        output.minFrameDuration = CMTimeMake(1, 15);
-        
         
         [session startRunning];
     }
@@ -75,41 +72,47 @@
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
     
-    // Get a CMSampleBuffer's Core Video image buffer for the media data
-    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer); 
-    // Lock the base address of the pixel buffer
-    CVPixelBufferLockBaseAddress(imageBuffer, 0); 
-    
-    // Get the number of bytes per row for the pixel buffer
-    void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer); 
-    
-    // Get the number of bytes per row for the pixel buffer
-    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer); 
-    // Get the pixel buffer width and height
-    size_t width = CVPixelBufferGetWidth(imageBuffer); 
-    size_t height = CVPixelBufferGetHeight(imageBuffer); 
-    
-    // Create a device-dependent RGB color space
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB(); 
-    
-    // Create a bitmap graphics context with the sample buffer data
-    CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8, 
-                                                 bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst); 
-    // Create a Quartz image from the pixel data in the bitmap graphics context
-    CGImageRef quartzImage = CGBitmapContextCreateImage(context); 
-    // Unlock the pixel buffer
-    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
-    
-    // Free up the context and color space
-    CGContextRelease(context); 
-    CGColorSpaceRelease(colorSpace);
-    
-    
-    /*We display the result on the custom layer. All the display stuff must be done in the main thread because
-	 UIKit is no thread safe, and as we are not in the main thread (remember we didn't use the main_queue)
-	 we use performSelectorOnMainThread to call our CALayer and tell it to display the CGImage.*/
-	[self.view.layer performSelectorOnMainThread:@selector(setContents:) withObject: (id) quartzImage waitUntilDone:YES];
+    // create memory pool for handling our images since we are off the main thread.
+    @autoreleasepool {
+        
+        // Get a CMSampleBuffer's Core Video image buffer for the media data
+        CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer); 
+        
+        // turn buffer into an image we can manipulate
+        CIImage *coreImage = [CIImage imageWithCVPixelBuffer:imageBuffer];
+        
+        // apply some filters
+        CIFilter *hueAdjust = [CIFilter filterWithName:@"CIHueAdjust"];
+        [hueAdjust setDefaults];
+        [hueAdjust setValue: coreImage forKey:@"inputImage"];
+        [hueAdjust setValue: [NSNumber numberWithFloat:2.094] forKey: @"inputAngle"];
+        CIImage *result = [hueAdjust valueForKey: @"outputImage"];
+        
+        
+        CIFilter *invert = [CIFilter filterWithName:@"CIColorInvert"];
+        [invert setDefaults];
+        [invert setValue:result forKey:@"inputImage"];
+        result = invert.outputImage;
+        //    NSLog(@"invert input keys: %@",[invert inputKeys]);
+        //    NSLog(@"invert output keys: %@",[invert outputKeys]);
+        
+        
+        if( ciContext == nil )
+            ciContext = [CIContext contextWithOptions:nil];
+        
+        [ciContext drawImage:result atPoint:CGPointZero fromRect:[result extent]];
+        
+        CGImageRef finishedImage = [ciContext createCGImage:result fromRect:[result extent]];    
+        
+        /*We display the result on the custom layer. All the display stuff must be done in the main thread because
+         UIKit is no thread safe, and as we are not in the main thread (remember we didn't use the main_queue)
+         we use performSelectorOnMainThread to call our CALayer and tell it to display the CGImage.*/
+        [self.view.layer performSelectorOnMainThread:@selector(setContents:) withObject:(__bridge id)finishedImage waitUntilDone:YES];
+        
+        CGImageRelease(finishedImage);
+    }
 }
+
 
 
 - (void)viewDidLoad

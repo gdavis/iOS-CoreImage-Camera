@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CoreImage-Camera.xcscheme</key>
+		<key>CICamera.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>775EC06113DE18380053D962</key>
+		<key>7725AA4E13DE6A0A00344406</key>
 		<dict>
 			<key>primary</key>
 			<true/>

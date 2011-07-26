@@ -13,10 +13,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "775EC06113DE18380053D962"
-               BuildableName = "CoreImage-Camera.app"
-               BlueprintName = "CoreImage-Camera"
-               ReferencedContainer = "container:CoreImage-Camera.xcodeproj">
+               BlueprintIdentifier = "7725AA4E13DE6A0A00344406"
+               BuildableName = "CICamera.app"
+               BlueprintName = "CICamera"
+               ReferencedContainer = "container:CICamera.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,10 +40,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "775EC06113DE18380053D962"
-            BuildableName = "CoreImage-Camera.app"
-            BlueprintName = "CoreImage-Camera"
-            ReferencedContainer = "container:CoreImage-Camera.xcodeproj">
+            BlueprintIdentifier = "7725AA4E13DE6A0A00344406"
+            BuildableName = "CICamera.app"
+            BlueprintName = "CICamera"
+            ReferencedContainer = "container:CICamera.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -58,10 +58,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "775EC06113DE18380053D962"
-            BuildableName = "CoreImage-Camera.app"
-            BlueprintName = "CoreImage-Camera"
-            ReferencedContainer = "container:CoreImage-Camera.xcodeproj">
+            BlueprintIdentifier = "7725AA4E13DE6A0A00344406"
+            BuildableName = "CICamera.app"
+            BlueprintName = "CICamera"
+            ReferencedContainer = "container:CICamera.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

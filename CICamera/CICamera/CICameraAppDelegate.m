@@ -1,16 +1,29 @@
 //
-//  CoreImage_CameraAppDelegate.m
-//  CoreImage-Camera
+//  CICameraAppDelegate.m
+//  CICamera
 //
 //  Created by Grant Davis on 7/25/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "CoreImage_CameraAppDelegate.h"
+#import "CICameraAppDelegate.h"
 
-@implementation CoreImage_CameraAppDelegate
+#import "CICameraViewController.h"
+
+@implementation CICameraAppDelegate
 
 @synthesize window = _window;
+@synthesize viewController = _viewController;
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    self.viewController = [[CICameraViewController alloc] initWithNibName:@"CICameraViewController" bundle:nil]; 
+    self.window.rootViewController = self.viewController;
+    [self.window makeKeyAndVisible];
+    return YES;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
