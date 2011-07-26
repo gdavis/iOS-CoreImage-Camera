@@ -2011,10 +2011,10 @@
     s = 0;
 }</string>
 		</dict>
-		<real>333354475.47069699</real>
-		<string>{2140, 2618}</string>
-		<string>{3812, 0}</string>
-		<string>-captureOutput:didOutputSampleBuffer:fromConnection:</string>
+		<real>333355000.40093899</real>
+		<string>{0, 2404}</string>
+		<string>{939, 0}</string>
+		<string>-loadView</string>
 		<string>Xcode.IDEKit.EditorDocument.SourceCode</string>
 		<dict>
 			<key>$class</key>
@@ -2057,7 +2057,7 @@
 				</dict>
 			</array>
 		</dict>
-		<string>{{0, 0}, {1293, 982}}</string>
+		<string>{{0, 0}, {1293, 960}}</string>
 		<true/>
 		<dict>
 			<key>$class</key>
@@ -8733,9 +8733,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>333354475.46719497</real>
-		<string>{2140, 2618}</string>
-		<string>{3812, 0}</string>
+		<real>333355000.39686501</real>
+		<string>{0, 2404}</string>
+		<string>{939, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -8829,7 +8829,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>333353972.648691</real>
+		<real>333354809.65092999</real>
 		<string>{0, 612}</string>
 		<string>{603, 0}</string>
 		<dict>
@@ -9553,7 +9553,7 @@
 				<integer>673</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>333354162.86990499</real>
+			<real>333354829.56221598</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -9564,7 +9564,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 12:22 AM</string>
+		<string>Today at 12:33 AM</string>
 		<integer>234</integer>
 		<dict>
 			<key>$class</key>
@@ -9708,7 +9708,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>691</integer>
+					<integer>692</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -9760,9 +9760,10 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>556</integer>
+				<integer>691</integer>
 			</dict>
 		</dict>
+		<string>file://localhost/Users/grantdavis/Workspace/iOS-CoreImage-Camera/CICamera/CICamera/CICameraViewController.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -9777,10 +9778,9 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>692</integer>
+				<integer>556</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/grantdavis/Workspace/iOS-CoreImage-Camera/CICamera/CICamera/CICameraViewController.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>

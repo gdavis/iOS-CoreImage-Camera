@@ -88,7 +88,6 @@
         [hueAdjust setValue: [NSNumber numberWithFloat:2.094] forKey: @"inputAngle"];
         CIImage *result = [hueAdjust valueForKey: @"outputImage"];
         
-        
         CIFilter *invert = [CIFilter filterWithName:@"CIColorInvert"];
         [invert setDefaults];
         [invert setValue:result forKey:@"inputImage"];
@@ -96,7 +95,7 @@
         //    NSLog(@"invert input keys: %@",[invert inputKeys]);
         //    NSLog(@"invert output keys: %@",[invert outputKeys]);
         
-        
+        // only create one CIContext
         if( ciContext == nil )
             ciContext = [CIContext contextWithOptions:nil];
         
@@ -104,9 +103,9 @@
         
         CGImageRef finishedImage = [ciContext createCGImage:result fromRect:[result extent]];    
         
-        /*We display the result on the custom layer. All the display stuff must be done in the main thread because
-         UIKit is no thread safe, and as we are not in the main thread (remember we didn't use the main_queue)
-         we use performSelectorOnMainThread to call our CALayer and tell it to display the CGImage.*/
+        // We display the result on the custom layer. All the display stuff must be done in the main thread because
+        // UIKit is no thread safe, and as we are not in the main thread (remember we didn't use the main_queue)
+        // we use performSelectorOnMainThread to call our CALayer and tell it to display the CGImage.
         [self.view.layer performSelectorOnMainThread:@selector(setContents:) withObject:(__bridge id)finishedImage waitUntilDone:YES];
         
         CGImageRelease(finishedImage);
