@@ -17,8 +17,11 @@
     AVCaptureSession *session;
     AVCaptureStillImageOutput *imageOutput;
     AVCaptureConnection *cameraConnection;
+    AVCaptureVideoDataOutput *output;
     UIImageView *imageView;
     CIContext *ciContext;
 }
+
+@property(nonatomic,readonly)AVCaptureSession *session;
 
 @end

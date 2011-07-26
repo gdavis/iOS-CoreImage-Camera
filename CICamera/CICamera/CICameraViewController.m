@@ -9,6 +9,7 @@
 #import "CICameraViewController.h"
 
 @implementation CICameraViewController
+@synthesize session;
 
 - (void)didReceiveMemoryWarning
 {
@@ -34,9 +35,16 @@
 //    NSLog(@"Color adjustment: %@", [CIFilter filterNamesInCategory:kCICategoryColorAdjustment]);
     NSLog(@"Built-in effects: %@", [CIFilter filterNamesInCategory:kCICategoryBuiltIn]);
     
+    
+    // only create one CIContext
+    if( ciContext == nil )
+        ciContext = [CIContext contextWithOptions:nil];
+    
     // create a capture session
     session = [[AVCaptureSession alloc] init];
     session.sessionPreset = AVCaptureSessionPresetMedium;
+    
+    
     
     // setup the device and input
     AVCaptureDevice *videoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -47,7 +55,7 @@
         [session addInput:videoInput];
         
         // Create a VideoDataOutput and add it to the session
-        AVCaptureVideoDataOutput *output = [[AVCaptureVideoDataOutput alloc] init];
+        output = [[AVCaptureVideoDataOutput alloc] init];
         output.alwaysDiscardsLateVideoFrames = YES;
         [session addOutput:output];
         
@@ -67,7 +75,6 @@
         NSLog(@"No camera input available.");
     }
 }
-
 
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
@@ -95,10 +102,6 @@
         //    NSLog(@"invert input keys: %@",[invert inputKeys]);
         //    NSLog(@"invert output keys: %@",[invert outputKeys]);
         
-        // only create one CIContext
-        if( ciContext == nil )
-            ciContext = [CIContext contextWithOptions:nil];
-        
         [ciContext drawImage:result atPoint:CGPointZero fromRect:[result extent]];
         
         CGImageRef finishedImage = [ciContext createCGImage:result fromRect:[result extent]];    
@@ -112,8 +115,6 @@
     }
 }
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -125,6 +126,10 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    ciContext = nil;
+    
+    [session stopRunning];
+    session = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
