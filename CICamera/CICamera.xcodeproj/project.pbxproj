@@ -19,6 +19,7 @@
 		7725AA7313DE6AA800344406 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7725AA7213DE6AA800344406 /* CoreVideo.framework */; };
 		7725AA7513DE6AB700344406 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7725AA7413DE6AB700344406 /* CoreMedia.framework */; };
 		7725AA7913DE6CF500344406 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7725AA7813DE6CF500344406 /* CoreImage.framework */; };
+		77547FAF13DF915C00B12AC0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77547FAE13DF915C00B12AC0 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		7725AA7213DE6AA800344406 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = ../../../../../System/Library/Frameworks/CoreVideo.framework; sourceTree = "<group>"; };
 		7725AA7413DE6AB700344406 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = ../../../../../System/Library/Frameworks/CoreMedia.framework; sourceTree = "<group>"; };
 		7725AA7813DE6CF500344406 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		77547FAE13DF915C00B12AC0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,8 +48,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7725AA7913DE6CF500344406 /* CoreImage.framework in Frameworks */,
+				77547FAF13DF915C00B12AC0 /* QuartzCore.framework in Frameworks */,
 				7725AA5413DE6A0A00344406 /* UIKit.framework in Frameworks */,
+				7725AA7913DE6CF500344406 /* CoreImage.framework in Frameworks */,
 				7725AA5613DE6A0A00344406 /* Foundation.framework in Frameworks */,
 				7725AA5813DE6A0A00344406 /* CoreGraphics.framework in Frameworks */,
 				7725AA7113DE6A6800344406 /* AVFoundation.framework in Frameworks */,
@@ -62,6 +65,7 @@
 		7725AA4413DE6A0A00344406 = {
 			isa = PBXGroup;
 			children = (
+				77547FAE13DF915C00B12AC0 /* QuartzCore.framework */,
 				7725AA5913DE6A0A00344406 /* CICamera */,
 				7725AA5213DE6A0A00344406 /* Frameworks */,
 				7725AA5013DE6A0A00344406 /* Products */,
@@ -79,6 +83,7 @@
 		7725AA5213DE6A0A00344406 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7725AA7813DE6CF500344406 /* CoreImage.framework */,
 				7725AA7413DE6AB700344406 /* CoreMedia.framework */,
 				7725AA7213DE6AA800344406 /* CoreVideo.framework */,
 				7725AA7013DE6A6800344406 /* AVFoundation.framework */,
@@ -105,7 +110,6 @@
 		7725AA5A13DE6A0A00344406 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7725AA7813DE6CF500344406 /* CoreImage.framework */,
 				7725AA5B13DE6A0A00344406 /* CICamera-Info.plist */,
 				7725AA5C13DE6A0A00344406 /* InfoPlist.strings */,
 				7725AA5F13DE6A0A00344406 /* main.m */,
@@ -294,6 +298,7 @@
 				7725AA6F13DE6A0A00344406 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

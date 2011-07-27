@@ -17,6 +17,30 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
+
+float randRange(float low, float high);
+float interp(float low,float high, float n);
+float clamp(float input, float low, float high);
+float modulus(float a, float b);
+float degreesInterp(float angle1, float angle2, float n);
+float farenheitToCelsius(float f);
+float celsiusToFarenheit(float c);
+float inchesToCM(float in);
+float knotsToMPH(float knots);
+float knotsToKPH(float knots);
+float distance(float x, float y, float x2, float y2);
+
+float max(float a, float b);
+float min(float a, float b);
+
+
+float TNFSliderFunction(float input);
+
+#define DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) / 180.0 * M_PI)
+
+
+
 #pragma mark - View lifecycle
 
 
@@ -33,7 +57,7 @@
 //    NSLog(@"Blurs: %@", [CIFilter filterNamesInCategory:kCICategoryBlur]);
 //    NSLog(@"Color effects: %@", [CIFilter filterNamesInCategory:kCICategoryColorEffect]);
 //    NSLog(@"Color adjustment: %@", [CIFilter filterNamesInCategory:kCICategoryColorAdjustment]);
-    NSLog(@"Built-in effects: %@", [CIFilter filterNamesInCategory:kCICategoryBuiltIn]);
+//    NSLog(@"Built-in effects: %@", [CIFilter filterNamesInCategory:kCICategoryBuiltIn]);
     
     
     // only create one CIContext
@@ -42,9 +66,7 @@
     
     // create a capture session
     session = [[AVCaptureSession alloc] init];
-    session.sessionPreset = AVCaptureSessionPresetMedium;
-    
-    
+    session.sessionPreset = AVCaptureSessionPreset640x480;
     
     // setup the device and input
     AVCaptureDevice *videoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -64,11 +86,26 @@
         [output setSampleBufferDelegate:self queue:queue];
         dispatch_release(queue);
         
+        cameraConnection = [[output connections] objectAtIndex:0];
+        cameraConnection.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
+        
+        videoLayer = [CALayer layer];
+        videoLayer.frame = self.view.layer.bounds;
+        [self.view.layer addSublayer:videoLayer];
+        
+//        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+//        gradientLayer.frame = self.view.layer.bounds;
+//        gradientLayer.type = kCAGradientLayerAxial;
+//        gradientLayer.colors = [NSArray arrayWithObjects:(__bridge id)[[UIColor redColor] CGColor], (__bridge id)[[UIColor yellowColor] CGColor], nil];
+//        [self.view.layer addSublayer:gradientLayer];
+        
         // Specify the pixel format
         output.videoSettings = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA] 
                                                            forKey:(id)kCVPixelBufferPixelFormatTypeKey];
         
         [session startRunning];
+        
+        useFilters = YES;
     }
     else { 
         // Handle the failure.
@@ -86,33 +123,67 @@
         CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer); 
         
         // turn buffer into an image we can manipulate
-        CIImage *coreImage = [CIImage imageWithCVPixelBuffer:imageBuffer];
+        CIImage *result = [CIImage imageWithCVPixelBuffer:imageBuffer];
         
-        // apply some filters
-        CIFilter *hueAdjust = [CIFilter filterWithName:@"CIHueAdjust"];
-        [hueAdjust setDefaults];
-        [hueAdjust setValue: coreImage forKey:@"inputImage"];
-        [hueAdjust setValue: [NSNumber numberWithFloat:2.094] forKey: @"inputAngle"];
-        CIImage *result = [hueAdjust valueForKey: @"outputImage"];
+        // store final usable image
+        CGImageRef finishedImage;
         
-        CIFilter *invert = [CIFilter filterWithName:@"CIColorInvert"];
-        [invert setDefaults];
-        [invert setValue:result forKey:@"inputImage"];
-        result = invert.outputImage;
-        //    NSLog(@"invert input keys: %@",[invert inputKeys]);
-        //    NSLog(@"invert output keys: %@",[invert outputKeys]);
+        if( useFilters ) {
+            // hue
+            CIFilter *hueAdjust = [CIFilter filterWithName:@"CIHueAdjust"];
+            [hueAdjust setDefaults];
+            [hueAdjust setValue:result forKey:@"inputImage"];
+            [hueAdjust setValue:[NSNumber numberWithFloat:8.094] forKey: @"inputAngle"];
+            result = hueAdjust.outputImage;
+
+            
+            // gradient
+//            CIFilter *redEye = [CIFilter filterWithName:@"CIRadialGradient"];
+//            [redEye setDefaults];
+//            [redEye setValue:result forKey:@"inputImage"];
+//            [redEye setValue:[NSNumber numberWithInt:100] forKey:@"inputRadius0"];
+//            [redEye setValue:[NSNumber numberWithInt:600] forKey:@"inputRadius1"];
+//            
+//            [redEye setValue:[UIColor colorWithRed:1.f green:0.f blue:0.f alpha:1.f] forKey:@"inputColor0"];
+//            [redEye setValue:[UIColor colorWithRed:0.f green:0.f blue:1.f alpha:1.f] forKey:@"inputColor1"];
+//            result = redEye.outputImage;
+            
+//            [self printFilterInfo:redEye];
+            
+            
+            // invert
+//            CIFilter *invert = [CIFilter filterWithName:@"CIColorInvert"];
+//            [invert setDefaults];
+//            [invert setValue:result forKey:@"inputImage"];
+//            result = invert.outputImage;
+        }
+        else {
+            // add vibrance
+            
+        }
         
-        [ciContext drawImage:result atPoint:CGPointZero fromRect:[result extent]];
+        finishedImage = [ciContext createCGImage:result fromRect:[result extent]];    
         
-        CGImageRef finishedImage = [ciContext createCGImage:result fromRect:[result extent]];    
-        
-        // We display the result on the custom layer. All the display stuff must be done in the main thread because
-        // UIKit is no thread safe, and as we are not in the main thread (remember we didn't use the main_queue)
-        // we use performSelectorOnMainThread to call our CALayer and tell it to display the CGImage.
-        [self.view.layer performSelectorOnMainThread:@selector(setContents:) withObject:(__bridge id)finishedImage waitUntilDone:YES];
+        [videoLayer performSelectorOnMainThread:@selector(setContents:) withObject:(__bridge id)finishedImage waitUntilDone:YES];
         
         CGImageRelease(finishedImage);
     }
+}
+
+- (void)printFilterInfo:(CIFilter*)filter {
+    NSLog(@"\n%@\ninput keys: %@ \noutput keys: %@", filter.name, [filter inputKeys], [filter outputKeys]);
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    CATransition *animation = [CATransition animation];
+    [animation setDelegate:self];
+    [animation setDuration:2.0f];
+    CAMediaTimingFunction *tf = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    [animation setTimingFunction:tf];
+    [animation setType:@"rippleEffect"];
+    [videoLayer addAnimation:animation forKey:NULL];
+    
+    useFilters = !useFilters;
 }
 
 - (void)viewDidLoad
@@ -127,6 +198,8 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     ciContext = nil;
+    
+    cameraConnection = nil;
     
     [session stopRunning];
     session = nil;
@@ -155,7 +228,16 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
+//    return interfaceOrientation == UIInterfaceOrientationLandscapeRight || interfaceOrientation == UIInterfaceOrientationLandscapeLeft ? YES : NO;
     return interfaceOrientation == UIInterfaceOrientationLandscapeRight ? YES : NO;
 }
+
+// adjust camera orientation 
+//-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+//    if(self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ) 
+//        cameraConnection.videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
+//    else if( self.interfaceOrientation == UIInterfaceOrientationLandscapeRight )
+//        cameraConnection.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
+//}
 
 @end

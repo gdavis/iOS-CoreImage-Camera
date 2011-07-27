@@ -1,0 +1,329 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		77547F7713DF518600B12AC0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77547F7613DF518600B12AC0 /* UIKit.framework */; };
+		77547F7913DF518600B12AC0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77547F7813DF518600B12AC0 /* Foundation.framework */; };
+		77547F7B13DF518700B12AC0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77547F7A13DF518600B12AC0 /* CoreGraphics.framework */; };
+		77547F7D13DF518700B12AC0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77547F7C13DF518700B12AC0 /* QuartzCore.framework */; };
+		77547F7F13DF518700B12AC0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77547F7E13DF518700B12AC0 /* OpenGLES.framework */; };
+		77547F8513DF518700B12AC0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77547F8313DF518700B12AC0 /* InfoPlist.strings */; };
+		77547F8713DF518700B12AC0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77547F8613DF518700B12AC0 /* main.m */; };
+		77547F8B13DF518700B12AC0 /* GLCameraAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77547F8A13DF518700B12AC0 /* GLCameraAppDelegate.m */; };
+		77547F8D13DF518700B12AC0 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 77547F8C13DF518700B12AC0 /* Shader.fsh */; };
+		77547F8F13DF518700B12AC0 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 77547F8E13DF518700B12AC0 /* Shader.vsh */; };
+		77547F9213DF518700B12AC0 /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77547F9113DF518700B12AC0 /* EAGLView.m */; };
+		77547F9513DF518700B12AC0 /* GLCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77547F9413DF518700B12AC0 /* GLCameraViewController.m */; };
+		77547F9813DF518700B12AC0 /* GLCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77547F9613DF518700B12AC0 /* GLCameraViewController.xib */; };
+		77547FA413DF54C500B12AC0 /* GLCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 77547FA313DF54C500B12AC0 /* GLCamera.m */; };
+		77547FA613DF550500B12AC0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77547FA513DF550500B12AC0 /* AVFoundation.framework */; };
+		77547FA813DF551500B12AC0 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77547FA713DF551500B12AC0 /* CoreVideo.framework */; };
+		77547FAA13DF566600B12AC0 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77547FA913DF566600B12AC0 /* CoreImage.framework */; };
+		77547FAC13DF575700B12AC0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77547FAB13DF575700B12AC0 /* CoreMedia.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		77547F7213DF518600B12AC0 /* GLCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		77547F7613DF518600B12AC0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		77547F7813DF518600B12AC0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		77547F7A13DF518600B12AC0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		77547F7C13DF518700B12AC0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		77547F7E13DF518700B12AC0 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		77547F8213DF518700B12AC0 /* GLCamera-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GLCamera-Info.plist"; sourceTree = "<group>"; };
+		77547F8413DF518700B12AC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		77547F8613DF518700B12AC0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		77547F8813DF518700B12AC0 /* GLCamera-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GLCamera-Prefix.pch"; sourceTree = "<group>"; };
+		77547F8913DF518700B12AC0 /* GLCameraAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLCameraAppDelegate.h; sourceTree = "<group>"; };
+		77547F8A13DF518700B12AC0 /* GLCameraAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLCameraAppDelegate.m; sourceTree = "<group>"; };
+		77547F8C13DF518700B12AC0 /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
+		77547F8E13DF518700B12AC0 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
+		77547F9013DF518700B12AC0 /* EAGLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
+		77547F9113DF518700B12AC0 /* EAGLView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
+		77547F9313DF518700B12AC0 /* GLCameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLCameraViewController.h; sourceTree = "<group>"; };
+		77547F9413DF518700B12AC0 /* GLCameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLCameraViewController.m; sourceTree = "<group>"; };
+		77547F9713DF518700B12AC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GLCameraViewController.xib; sourceTree = "<group>"; };
+		77547FA213DF54C500B12AC0 /* GLCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCamera.h; sourceTree = SOURCE_ROOT; };
+		77547FA313DF54C500B12AC0 /* GLCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCamera.m; sourceTree = SOURCE_ROOT; };
+		77547FA513DF550500B12AC0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		77547FA713DF551500B12AC0 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		77547FA913DF566600B12AC0 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		77547FAB13DF575700B12AC0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		77547F6F13DF518600B12AC0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77547F7713DF518600B12AC0 /* UIKit.framework in Frameworks */,
+				77547FAA13DF566600B12AC0 /* CoreImage.framework in Frameworks */,
+				77547FA813DF551500B12AC0 /* CoreVideo.framework in Frameworks */,
+				77547FAC13DF575700B12AC0 /* CoreMedia.framework in Frameworks */,
+				77547FA613DF550500B12AC0 /* AVFoundation.framework in Frameworks */,
+				77547F7913DF518600B12AC0 /* Foundation.framework in Frameworks */,
+				77547F7B13DF518700B12AC0 /* CoreGraphics.framework in Frameworks */,
+				77547F7D13DF518700B12AC0 /* QuartzCore.framework in Frameworks */,
+				77547F7F13DF518700B12AC0 /* OpenGLES.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		77547F6713DF518600B12AC0 = {
+			isa = PBXGroup;
+			children = (
+				77547F8013DF518700B12AC0 /* GLCamera */,
+				77547F7513DF518600B12AC0 /* Frameworks */,
+				77547F7313DF518600B12AC0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		77547F7313DF518600B12AC0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				77547F7213DF518600B12AC0 /* GLCamera.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		77547F7513DF518600B12AC0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77547FAB13DF575700B12AC0 /* CoreMedia.framework */,
+				77547F7613DF518600B12AC0 /* UIKit.framework */,
+				77547F7813DF518600B12AC0 /* Foundation.framework */,
+				77547F7A13DF518600B12AC0 /* CoreGraphics.framework */,
+				77547FA913DF566600B12AC0 /* CoreImage.framework */,
+				77547FA713DF551500B12AC0 /* CoreVideo.framework */,
+				77547FA513DF550500B12AC0 /* AVFoundation.framework */,
+				77547F7C13DF518700B12AC0 /* QuartzCore.framework */,
+				77547F7E13DF518700B12AC0 /* OpenGLES.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		77547F8013DF518700B12AC0 /* GLCamera */ = {
+			isa = PBXGroup;
+			children = (
+				77547FA213DF54C500B12AC0 /* GLCamera.h */,
+				77547FA313DF54C500B12AC0 /* GLCamera.m */,
+				77547F8913DF518700B12AC0 /* GLCameraAppDelegate.h */,
+				77547F8A13DF518700B12AC0 /* GLCameraAppDelegate.m */,
+				77547F8C13DF518700B12AC0 /* Shader.fsh */,
+				77547F8E13DF518700B12AC0 /* Shader.vsh */,
+				77547F9013DF518700B12AC0 /* EAGLView.h */,
+				77547F9113DF518700B12AC0 /* EAGLView.m */,
+				77547F9313DF518700B12AC0 /* GLCameraViewController.h */,
+				77547F9413DF518700B12AC0 /* GLCameraViewController.m */,
+				77547F9613DF518700B12AC0 /* GLCameraViewController.xib */,
+				77547F8113DF518700B12AC0 /* Supporting Files */,
+			);
+			path = GLCamera;
+			sourceTree = "<group>";
+		};
+		77547F8113DF518700B12AC0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				77547F8213DF518700B12AC0 /* GLCamera-Info.plist */,
+				77547F8313DF518700B12AC0 /* InfoPlist.strings */,
+				77547F8613DF518700B12AC0 /* main.m */,
+				77547F8813DF518700B12AC0 /* GLCamera-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		77547F7113DF518600B12AC0 /* GLCamera */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 77547F9B13DF518700B12AC0 /* Build configuration list for PBXNativeTarget "GLCamera" */;
+			buildPhases = (
+				77547F6E13DF518600B12AC0 /* Sources */,
+				77547F6F13DF518600B12AC0 /* Frameworks */,
+				77547F7013DF518600B12AC0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GLCamera;
+			productName = GLCamera;
+			productReference = 77547F7213DF518600B12AC0 /* GLCamera.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		77547F6913DF518600B12AC0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 77547F6C13DF518600B12AC0 /* Build configuration list for PBXProject "GLCamera" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 77547F6713DF518600B12AC0;
+			productRefGroup = 77547F7313DF518600B12AC0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				77547F7113DF518600B12AC0 /* GLCamera */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		77547F7013DF518600B12AC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77547F8513DF518700B12AC0 /* InfoPlist.strings in Resources */,
+				77547F8D13DF518700B12AC0 /* Shader.fsh in Resources */,
+				77547F8F13DF518700B12AC0 /* Shader.vsh in Resources */,
+				77547F9813DF518700B12AC0 /* GLCameraViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		77547F6E13DF518600B12AC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77547F8713DF518700B12AC0 /* main.m in Sources */,
+				77547F8B13DF518700B12AC0 /* GLCameraAppDelegate.m in Sources */,
+				77547F9213DF518700B12AC0 /* EAGLView.m in Sources */,
+				77547F9513DF518700B12AC0 /* GLCameraViewController.m in Sources */,
+				77547FA413DF54C500B12AC0 /* GLCamera.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		77547F8313DF518700B12AC0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				77547F8413DF518700B12AC0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		77547F9613DF518700B12AC0 /* GLCameraViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				77547F9713DF518700B12AC0 /* en */,
+			);
+			name = GLCameraViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		77547F9913DF518700B12AC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		77547F9A13DF518700B12AC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		77547F9C13DF518700B12AC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GLCamera/GLCamera-Prefix.pch";
+				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				INFOPLIST_FILE = "GLCamera/GLCamera-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		77547F9D13DF518700B12AC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GLCamera/GLCamera-Prefix.pch";
+				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				INFOPLIST_FILE = "GLCamera/GLCamera-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		77547F6C13DF518600B12AC0 /* Build configuration list for PBXProject "GLCamera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77547F9913DF518700B12AC0 /* Debug */,
+				77547F9A13DF518700B12AC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		77547F9B13DF518700B12AC0 /* Build configuration list for PBXNativeTarget "GLCamera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77547F9C13DF518700B12AC0 /* Debug */,
+				77547F9D13DF518700B12AC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 77547F6913DF518600B12AC0 /* Project object */;
+}

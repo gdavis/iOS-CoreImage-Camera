@@ -20,8 +20,14 @@
     AVCaptureVideoDataOutput *output;
     UIImageView *imageView;
     CIContext *ciContext;
+    
+    CALayer *videoLayer;
+    BOOL useFilters;
 }
 
+- (void)printFilterInfo:(CIFilter*)filter;
+
 @property(nonatomic,readonly)AVCaptureSession *session;
+//- (CGAffineTransform)transformForOrientation;
 
 @end

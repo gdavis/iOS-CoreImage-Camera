@@ -1,0 +1,238 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* ColorTrackingAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {879, 956}}";
+			sepNavSelRange = "{52, 0}";
+			sepNavVisRange = "{0, 581}";
+			sepNavWindowFrame = "{{15, 385}, {938, 1028}}";
+		};
+	};
+	1D3623250D0F684500981E51 /* ColorTrackingAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {879, 2160}}";
+			sepNavSelRange = "{165, 0}";
+			sepNavVisRange = "{0, 1732}";
+			sepNavWindowFrame = "{{15, 385}, {938, 1028}}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* ColorTracking */ = {
+		activeExec = 0;
+		executables = (
+			BCF0E708125EBDF4005B4C15 /* ColorTracking */,
+		);
+	};
+	28D7ACF60DDB3853001CB0EB /* ColorTrackingViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1250, 956}}";
+			sepNavSelRange = "{168, 0}";
+			sepNavVisRange = "{0, 1528}";
+			sepNavWindowFrame = "{{343, 150}, {1309, 1028}}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* ColorTrackingViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1846, 8288}}";
+			sepNavSelRange = "{6831, 0}";
+			sepNavVisRange = "{5609, 2175}";
+			sepNavWindowFrame = "{{343, 150}, {1309, 1028}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Release;
+		activeExecutable = BCF0E708125EBDF4005B4C15 /* ColorTracking */;
+		activeSDKPreference = iphoneos4.1;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* ColorTracking */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* ColorTracking */,
+		);
+		codeSenseManager = BCF0E70F125EBE12005B4C15 /* Code sense */;
+		executables = (
+			BCF0E708125EBDF4005B4C15 /* ColorTracking */,
+		);
+		perUserDictionary = {
+			PBXPerProjectTemplateStateSaveDate = 309450951;
+			PBXWorkspaceStateSaveDate = 309450951;
+		};
+		perUserProjectItems = {
+			BC0BBE7F126BD501004E14D4 /* PBXTextBookmark */ = BC0BBE7F126BD501004E14D4 /* PBXTextBookmark */;
+			BC1FDA1D126E991200FA3C96 /* PBXTextBookmark */ = BC1FDA1D126E991200FA3C96 /* PBXTextBookmark */;
+			BCD8A5B81271DD540055214F /* PBXTextBookmark */ = BCD8A5B81271DD540055214F /* PBXTextBookmark */;
+		};
+		sourceControlManager = BCF0E70E125EBE12005B4C15 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {867, 352}}";
+			sepNavSelRange = "{402, 0}";
+			sepNavVisRange = "{0, 444}";
+			sepNavWindowFrame = "{{351, 0}, {1187, 1002}}";
+		};
+	};
+	8D1107310486CEB800E47090 /* ColorTracking-Info.plist */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {847, 931}}";
+			sepNavSelRange = "{883, 0}";
+			sepNavVisRect = "{{0, 0}, {847, 931}}";
+			sepNavWindowFrame = "{{925, 390}, {892, 1028}}";
+		};
+	};
+	BC0BBE7F126BD501004E14D4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* ColorTrackingViewController.h */;
+		name = "ColorTrackingViewController.h: 32";
+		rLen = 0;
+		rLoc = 917;
+		rType = 0;
+		vrLen = 1437;
+		vrLoc = 0;
+	};
+	BC1FDA1D126E991200FA3C96 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* ColorTrackingViewController.m */;
+		name = "ColorTrackingViewController.m: 211";
+		rLen = 0;
+		rLoc = 6831;
+		rType = 0;
+		vrLen = 2161;
+		vrLoc = 5602;
+	};
+	BC3F7988125EC40400987A60 /* ColorTrackingGLView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1128, 930}}";
+			sepNavSelRange = "{160, 0}";
+			sepNavVisRange = "{0, 961}";
+			sepNavWindowFrame = "{{311, 13}, {1187, 1002}}";
+		};
+	};
+	BC3F7989125EC40400987A60 /* ColorTrackingGLView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1552, 3376}}";
+			sepNavSelRange = "{160, 0}";
+			sepNavVisRange = "{0, 1476}";
+			sepNavWindowFrame = "{{865, 208}, {1187, 1002}}";
+		};
+	};
+	BC3F7BCC1261013400987A60 /* ColorTrackingCamera.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1114, 956}}";
+			sepNavSelRange = "{160, 0}";
+			sepNavVisRange = "{0, 880}";
+			sepNavWindowFrame = "{{664, 150}, {1173, 1028}}";
+		};
+	};
+	BC3F7BCD1261013400987A60 /* ColorTrackingCamera.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1174, 1840}}";
+			sepNavSelRange = "{160, 0}";
+			sepNavVisRange = "{0, 1876}";
+			sepNavWindowFrame = "{{251, 153}, {1173, 1028}}";
+		};
+	};
+	BC3F7FC21262976700987A60 /* DirectDisplayShader.fsh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {833, 1106}}";
+			sepNavSelRange = "{0, 38}";
+			sepNavVisRange = "{0, 144}";
+			sepNavWindowFrame = "{{258, 0}, {892, 1178}}";
+		};
+	};
+	BC3F7FC31262976700987A60 /* DirectDisplayShader.vsh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {833, 1106}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 186}";
+			sepNavWindowFrame = "{{641, 0}, {892, 1178}}";
+		};
+	};
+	BC3F80D81262BD5400987A60 /* ThresholdShader.fsh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {833, 956}}";
+			sepNavSelRange = "{290, 0}";
+			sepNavVisRange = "{0, 915}";
+			sepNavWindowFrame = "{{236, 67}, {892, 1028}}";
+		};
+	};
+	BC3F80D91262BD5400987A60 /* ThresholdShader.vsh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {833, 956}}";
+			sepNavSelRange = "{202, 0}";
+			sepNavVisRange = "{0, 202}";
+			sepNavWindowFrame = "{{63, 0}, {892, 1028}}";
+		};
+	};
+	BC3F813A1262C8E100987A60 /* PositionShader.fsh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {833, 956}}";
+			sepNavSelRange = "{360, 0}";
+			sepNavVisRange = "{0, 1126}";
+			sepNavWindowFrame = "{{871, 84}, {892, 1028}}";
+		};
+	};
+	BC3F813B1262C8E100987A60 /* PositionShader.vsh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {833, 956}}";
+			sepNavSelRange = "{88, 0}";
+			sepNavVisRange = "{0, 202}";
+			sepNavWindowFrame = "{{735, 0}, {892, 1028}}";
+		};
+	};
+	BCD8A5B81271DD540055214F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* ColorTrackingViewController.m */;
+		name = "ColorTrackingViewController.m: 213";
+		rLen = 0;
+		rLoc = 6831;
+		rType = 0;
+		vrLen = 2175;
+		vrLoc = 5609;
+	};
+	BCF0E708125EBDF4005B4C15 /* ColorTracking */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = ColorTracking;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	BCF0E70E125EBE12005B4C15 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	BCF0E70F125EBE12005B4C15 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}
